@@ -1,40 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+This is a [Next.js](https://nextjs.org) project that has a sample screen details for Z2Data.
 
-## Getting Started
+[Clickhere](https://codesandbox.io/p/github/NiteshSoma/z2data-ui/draft/jolly-panka) to preview the application in codesandbox.
 
-First, run the development server:
+## Features implemented
+- A global layout that can resued in every component.
+- Common components like button, breadcumb can be resued by just passing necessary props along with and in any given components.
+- Menu that is responsive for all the screens and can be updated by adding necessary items to the given array and be passed for routing with necessary styles.
+- A screen for '404' that will not just give user an error, but a sweet message that can make the user hangon for more to come.
+- A sample dashboard page which given some details in folders with information regarding the electronics, supply, etc.
+- A JSON server that runs simultaneously along side the front server to provide data for the screens. This server can be used for CRUD using our port in which the server is running. (Used only GET as of now).
+- Utility functions that can be used accross the components.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Improvements
+  - Can implement other feature like Create, Delete and Update data using JSON server.
+  - Imlementation of redux for state management will be a better uproach. As of now using just inbuilt state which is managable.
+  - Having global implementation of styles by exporting generic styles like fontSize, fontColor, etc in global and importing where ever needed.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## Local setup
+  - git clone https://github.com/NiteshSoma/z2data-ui.git
+  - cd z2data-ui
+  - run 'yarn install' inorder to install dependencies from package.json
+  - run 'yarn dev' which will run both frontend server and JSON server for data access from db.json file.
