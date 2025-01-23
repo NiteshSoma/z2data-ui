@@ -15,6 +15,7 @@ This is a [Next.js](https://nextjs.org) project that has a sample screen details
   - Can implement other feature like Create, Delete and Update data using JSON server.
   - Implementation of redux for state management will be a better approach. As of now using just inbuilt state which is manageable.
   - Having global implementation of styles by exporting generic styles like fontSize, fontColor, etc in global and importing where ever needed.
+  - Responsiveness of styles can be achieved by considering all types of screens.
 
 ## Local setup
   - git clone https://github.com/NiteshSoma/z2data-ui.git
