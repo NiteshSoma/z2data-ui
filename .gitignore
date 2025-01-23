@@ -43,4 +43,3 @@ next-env.d.ts
 .vscode
 /package-lock.json
 yarn.lock
-db.json
