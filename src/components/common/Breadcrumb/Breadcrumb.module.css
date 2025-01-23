@@ -1,0 +1,16 @@
+.breadcrumb {
+    margin: 0px 0px 12px 16px;
+    font-size: 16px;
+
+    .anticon {
+        font-size: 16px;
+    }
+
+    .ant-breadcrumb a {
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    .ant-breadcrumb li:last-child {
+        color: rgba(0, 0, 0, 0.88);
+    }
+}

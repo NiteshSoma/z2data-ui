@@ -1,0 +1,30 @@
+/* MenuWrapper.module.css */
+.menuwrapper {
+    background-color: #2b394e !important;
+}
+
+.menuwrapper .ant-menu-item.ant-menu-item-selected {
+    background-color: #404c5f !important;
+    font-weight: bold;
+}
+
+.menuwrapper .ant-menu-item.ant-menu-item-selected .anticon {
+    color: #ffffff !important;
+}
+
+.menuwrapper .ant-menu-item.ant-menu-item-selected span {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.menuwrapper .ant-menu-title-content {
+    color: #ffffff !important;
+}
+
+.menuwrapper .ant-menu-sub {
+    background-color: #2b394e !important;
+}
+
+.menuwrapper .ant-menu-submenu-arrow {
+    color: #ffffff !important;
+}

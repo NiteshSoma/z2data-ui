@@ -1,0 +1,23 @@
+.dashboard {
+    background-color: white;
+    margin-top: 20px;
+
+    .buttongroup {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .dashboardmenu {
+        height: 480px;
+
+        .ant-menu-item {
+            height: 30px;
+            line-height: 30px;
+            padding-inline: 0;
+        }
+
+        .ant-menu-item-group-title {
+            padding: 8px 16px 0px;
+        }
+    }
+}
