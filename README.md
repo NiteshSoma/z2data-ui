@@ -4,6 +4,7 @@ This is a [Next.js](https://nextjs.org) project that has a sample screen details
 
 ## Features implemented
 - A global layout that can reused in every component.
+- A Simple signin page which pick name from and displays dynamically in header avatar.
 - Common components like button, breadcrumb can be reused by just passing necessary props along with and in any given components.
 - Menu that is responsive for all the screens and can be updated by adding necessary items to the given array and be passed for routing with necessary styles.
 - A screen for '404' that will not just give user an error, but a sweet message that can make the user hang on for more to come.
