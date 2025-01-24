@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import MenuComponent from '../Menu/Menu';
 import { useRouter } from 'next/router';
+import { getLocalStorageItem } from '@/utils/localStorageMethods';
 
 const { Header, Sider, Content } = Layout;
 
@@ -22,6 +23,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     const router = useRouter();
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const [isMobile, setIsMobile] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (getLocalStorageItem('name') === null) {
+            router.push('/');
+        }
+    }, [router]);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -53,13 +60,14 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     const handleMenuClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case 'logout':
-                console.log('Logout clicked');
+                localStorage.removeItem('name');
+                router.push('/');
                 break;
             case 'profile':
-                console.log('Profile clicked');
+                router.push('/profile');
                 break;
             case 'settings':
-                console.log('Settings clicked');
+                router.push('/settings');
                 break;
         }
     };
@@ -106,12 +114,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                         >
                             <Space style={{ cursor: 'pointer' }}>
                                 <Avatar icon={<UserOutlined />} />
-                                {!isMobile && <span style={{ color: 'white' }}>{"User Name"}</span>}
+                                {!isMobile && <span style={{ color: 'white' }}>{getLocalStorageItem('name')}</span>}
                             </Space>
                         </Dropdown>
                     </div>
                 </Header>
-                <Content style={{ margin: '0', backgroundColor: 'white' }}>
+                <Content style={{ padding: '10px', backgroundColor: 'white' }}>
                     {children}
                 </Content>
             </Layout>
