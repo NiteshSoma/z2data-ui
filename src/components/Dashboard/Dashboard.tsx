@@ -73,10 +73,6 @@ const items: TabsProps['items'] = [
 
 export default function DashboardComponent() {
 
-    const onChange = (key: string) => {
-        console.log(key);
-    };
-
     return (
         <Row className={'dashboard'}>
             <Col span={24}>
@@ -116,7 +112,7 @@ export default function DashboardComponent() {
                         />
                     </Col>
                     <Col span={19}>
-                        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+                        <Tabs defaultActiveKey="1" items={items} />
                     </Col>
                 </Row>
             </Col>

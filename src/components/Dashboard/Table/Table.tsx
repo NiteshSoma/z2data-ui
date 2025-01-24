@@ -100,7 +100,7 @@ const TableComponent: FC = () => {
         try {
             setLoading(true);
             const response = await fetch(
-                `http://localhost:3001/test?_start=${page * pageSize}&_limit=${pageSize}`,
+                `http://localhost:3001/test?_start=${(page - 1) * pageSize}&_limit=${pageSize}`,
             )
             const responseData = await response.json();
             setData(responseData);
