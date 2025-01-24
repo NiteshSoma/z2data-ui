@@ -1,4 +1,4 @@
-import { Skeleton, Table } from "antd";
+import { message, Skeleton, Table } from "antd";
 import { FC, useEffect, useState } from "react";
 import { ColumnsType } from "antd/es/table";
 import { FolderFilled } from "@ant-design/icons";
@@ -106,6 +106,7 @@ const TableComponent: FC = () => {
             setData(responseData);
         } catch (err) {
             console.log(err);
+            message.error('Something went wrong, please try again later');
         } finally {
             setLoading(false);
         }
