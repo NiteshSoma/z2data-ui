@@ -12,7 +12,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
         // Set the cookie with username and expiration time
         const expiry = new Date();
-        expiry.setSeconds(expiry.getSeconds() + 30); // Alter this value for adjusting session expiry
+        expiry.setSeconds(expiry.getSeconds() + 180); // Alter this value for adjusting session expiry
 
         const cookieValue = JSON.stringify({ username });
         res.setHeader('Set-Cookie', cookie.serialize('userSession', cookieValue, {
