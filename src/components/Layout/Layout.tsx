@@ -1,5 +1,5 @@
 import React, { useState, ReactNode, useEffect } from 'react';
-import { Layout, Input, Button, Avatar, Dropdown, Space } from 'antd';
+import { Layout, Input, Button, Avatar, Dropdown, Space, message } from 'antd';
 import styles from "./Layout.module.css";
 import type { MenuProps } from 'antd';
 import {
@@ -10,7 +10,6 @@ import {
 } from '@ant-design/icons';
 import MenuComponent from '../Menu/Menu';
 import { useRouter } from 'next/router';
-import { getLocalStorageItem } from '@/utils/localStorageMethods';
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,9 +23,24 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const [isMobile, setIsMobile] = useState<boolean>(false);
 
+    const [session, setSession] = useState<{ username: string } | null>(null);
+
     useEffect(() => {
-        if (getLocalStorageItem('name') === null) {
-            router.push('/');
+        if (typeof window !== 'undefined') {
+            const getSession = async () => {
+                const res = await fetch('/api/get-session');
+                const data = await res.json();
+
+                if (res.ok) {
+                    setSession(data.session);
+                    message.success('User logged in successfully');
+                } else {
+                    console.log('Session expired or not found');
+                    router.push("/");
+                }
+            };
+
+            getSession();
         }
     }, [router]);
 
@@ -57,11 +71,28 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         }
     ];
 
+    const handleLogout = async () => {
+        try {
+            const res = await fetch('/api/logout', {
+                method: 'POST',
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                console.log('Logged out successfully:', data.message);
+                router.push('/');
+            } else {
+                console.log('Error logging out:', data.error);
+            }
+        } catch (error) {
+            console.error('Failed to logout:', error);
+        }
+    };
+
     const handleMenuClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case 'logout':
-                localStorage.removeItem('name');
-                router.push('/');
+                handleLogout();
                 break;
             case 'profile':
                 router.push('/profile');
@@ -114,7 +145,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                         >
                             <Space style={{ cursor: 'pointer' }}>
                                 <Avatar icon={<UserOutlined />} />
-                                {!isMobile && <span style={{ color: 'white' }}>{getLocalStorageItem('name')}</span>}
+                                {!isMobile && <span style={{ color: 'white' }}>{session?.username}</span>}
                             </Space>
                         </Dropdown>
                     </div>

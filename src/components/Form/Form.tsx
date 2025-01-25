@@ -1,8 +1,7 @@
 import { Button, Card, Form, FormProps, Input, message } from "antd";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styles from "./Form.module.css";
 import { useRouter } from "next/router";
-import { getLocalStorageItem, setLocalStorageItem } from "@/utils/localStorageMethods";
 
 type FieldType = {
     name: string;
@@ -14,16 +13,27 @@ const FormComponent: FC = () => {
     const [form] = Form.useForm();
     const router = useRouter();
 
-    useEffect(() => {
-        if (getLocalStorageItem('name')) {
-            router.push('/dashboard');
-        }
-    }, [router]);
+    const handleSubmit: FormProps<FieldType>['onFinish'] = async (values) => {
+        try {
+            const res = await fetch('/api/set-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: values.name }),
+            });
 
-    const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        setLocalStorageItem('name', values.name, 30);
-        router.push('/dashboard');
-    };
+            const data = await res.json();
+            if (res.ok) {
+                console.log('Session set successfully:', data);
+                router.push('/dashboard');
+            } else {
+                console.log('Error setting session:', data.error);
+                message.error('Something went wrong, please try again');
+            }
+        } catch (error) {
+            console.error('Failed to set session:', error);
+            message.error('Something went wrong, please try again');
+        }
+    }
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
         message.error('Something went wrong, please try again');
@@ -36,7 +46,7 @@ const FormComponent: FC = () => {
                 form={form}
                 className={styles.form}
                 layout="vertical"
-                onFinish={onFinish}
+                onFinish={handleSubmit}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
