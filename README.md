@@ -4,9 +4,10 @@ This is a [Next.js](https://nextjs.org) project that has a sample screen details
 
 ## Features implemented
 - A global layout that can reused in every component.
+- Next JS server side method has been used for session management that helps us access the pages based on some information from cookies. (As of now just using username which can be replaces by token and check for it's validity).
 - Simple signin page which pick name from and displays dynamically in header avatar.
-- Logout functionality which removes details from local storage and routes back to signin page.
-- Condition to access authorized pages based on information from local storage which can be treated as session. (Can update other token details later to validate authorization).
+- Logout functionality which removes details from cookies and routes back to signin page.
+- Condition to access authorized pages based on information from cookie which can be treated as session. (Can update other token details later to validate authorization).
 - Common components like button, breadcrumb can be reused by just passing necessary props along with and in any given components.
 - Menu that is responsive for all the screens and can be updated by adding necessary items to the given array and be passed for routing with necessary styles.
 - A screen for '404' that will not just give user an error, but a sweet message that can make the user hang on for more to come.
