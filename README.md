@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project that has a sample screen details for Z2Data.
 
-[Clickhere](https://codesandbox.io/p/github/NiteshSoma/z2data-ui/draft/jolly-panka) to preview the application in codesandbox.
+[Clickhere](https://codesandbox.io/p/github/NiteshSoma/z2data-ui/draft/magical-buck) to preview the application in codesandbox.
 
 ## Features implemented
 - A global layout that can reused in every component.
